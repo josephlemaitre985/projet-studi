@@ -1,0 +1,31 @@
+.nav {
+
+    height: 50 px;
+    
+    
+    
+    }
+    .liste {
+    
+        list-style-type: none;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        justify-content: space-around;
+        z-index: 1000;
+        background-color: lightseagreen;
+       
+        
+    }
+    
+    .items {
+        color: white; 
+        cursor: pointer;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        bottom: 0;
+        display: flex;
+    }

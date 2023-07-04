@@ -1,0 +1,38 @@
+.connectbutton {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+}
+
+.title{
+    text-align: center;
+}
+
+.logo-homepage{
+    width: 30vw;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    
+}
+
+.background-logonav{
+    background-color: aliceblue;
+}
+
+.contact-homepage{
+    position: absolute;
+    /* left: 0; */
+    padding: 5px;
+    border: solid 1px #CCC;
+    border-radius: 8px;
+    color: #777;
+    background: bisque;
+    width: 30vw;
+    height: 24vh;
+    right: 5px;
+    top: -10px;
+}
+
