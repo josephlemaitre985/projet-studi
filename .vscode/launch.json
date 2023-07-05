@@ -11,7 +11,22 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/../server/server.js"
+            "program": "${workspaceFolder}/../projet-studi-server/server.js"
+        }
+    ],
+    "env": [
+        {
+            "env": "development",
+            "PG_DB": "Garage projet studi",
+            "PG_USER": "postgres",
+            "PG_PASSWORD": "Chouchou12072019!",
+            "PG_HOST": "localhost",
+            "PG_PORT": "5432",
+            "JWTPRIVATEKEY": "secretkey",
+            "SALT": "10"
+
+
+
         }
     ]
 }
