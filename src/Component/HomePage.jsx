@@ -7,7 +7,10 @@ import Menu from './Menu';
 const HomePage = ({ handleLogin }) => {
   return (
     <Box className='background-logonav' sx={{ p: 4 }}>
+      <div className='header'>
+        <img src='https://www.routebleueautomobile.fr/upload-articles/suivi-des-methodes-peugeot-route-bleue-automobile-pornic.jpeg'></img>
       <img src='https://i0.wp.com/my-barn.com/wp-content/uploads/2023/05/logo-garage-1.png?resize=1200%2C720&ssl=1' alt="Logo du garage" className='logo-homepage' />
+      </div>
       <Menu />
 
 

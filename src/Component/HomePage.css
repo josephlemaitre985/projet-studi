@@ -8,6 +8,14 @@
     text-align: center;
 }
 
+.header{
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+
 .logo-homepage{
     width: 30vw;
     margin: 0 auto;
