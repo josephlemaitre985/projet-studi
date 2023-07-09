@@ -1,14 +1,17 @@
 import { RiLogoutBoxRLine, RiMap2Line, RiShoppingBasketLine, RiUserLine } from "react-icons/ri";
-import {GiMechanicGarage} from "react-icons/gi"
-import {IoCarSportSharp} from "react-icons/io5"
+import { GiMechanicGarage } from "react-icons/gi";
+import { IoCarSportSharp } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
-import { BsFillGeoAltFill } from "react-icons/bs"
-import { BiHomeCircle } from "react-icons/bi"
+import { BsFillGeoAltFill } from "react-icons/bs";
+import { BiHomeCircle } from "react-icons/bi";
 import "./Menu.css";
-export default function Menu() {
+
+export default function Menu({ noMarginTop }) {
+  const menuClassName = noMarginTop ? "liste no-margin-top" : "liste";
+
   return (
     <nav className='nav'>
-      <div className='liste'>
+      <div className={menuClassName}>
         <NavLink to={"/"}>
           <div className='items'><BiHomeCircle size={30} /></div>
         </NavLink>
@@ -18,13 +21,13 @@ export default function Menu() {
           </div>
         </NavLink>
         <NavLink to={"/occasion"}>
-        <div className='items'>
-          <IoCarSportSharp size={30} /></div>
+          <div className='items'>
+            <IoCarSportSharp size={30} /></div>
         </NavLink>
         <NavLink to={"/information"}>
-        <div className='items'><BsFillGeoAltFill size={30} /></div>
+          <div className='items'><BsFillGeoAltFill size={30} /></div>
         </NavLink>
       </div>
     </nav>
-  )
+  );
 }

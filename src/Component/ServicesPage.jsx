@@ -1,45 +1,45 @@
 import React from 'react';
 import { Card, CardContent, Typography, Grid, CardMedia, collapseClasses } from '@mui/material';
-import './CarList.css'; 
+import './ServicesPage.css'; 
 import Menu from './Menu';
 import Footer from './Footer'; 
 
 
-const CarList = ({ cars }) => {
+const ServicesPage = ({ services }) => {
   return (
     <div>
       <Menu noMarginTop />
       <div>
-        <h1 className='cartitlepage'>Nos véhicules d'occasions</h1>
+        <h1 className='servicestitlepage'>Nos Services</h1>
       </div>
-      <div className="car-container"> {/* Ajout de la classe car-container */}
-        {cars.map((car, index) => (
-            <div className="car-card card-width" key={index}>
+      <div className="services-container">
+        {services.map((services, index) => (
+            <div className="service-card card-width" key={index}>
             <Card>
               <CardMedia 
                 component="img"
-                className="car-image" // Ajoutez la classe "car-image"
-                image={car.photo} // Ajout de la propriété "photo" dans l'objet car pour l'URL de l'image
-                alt={`${car.make} ${car.model}`}
+                className="service-image"
+                image={services.photo} // Ajout de la propriété "photo" dans l'objet car pour l'URL de l'image
+                alt={`${services.make} `}
               />
-              <CardContent className='car-description'>
+              <CardContent className='service-description'>
                 <Typography variant="h6" gutterBottom>
-                  {car.make} {car.model}
+                  {services.make} {services.model}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                  Année: {car.year}
+                 
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                  Prix: {car.price}€
+                  Prix: {services.price}€
                 </Typography>
                 {/* Add more details about the car */}
                 <Typography variant="body2" color="textSecondary">
-                  Kilométrage: {car.kilometers}
+                  
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                  Carburant: {car.fuel}
+                  
                 </Typography>
-                <a  className="contact" href="/information"> Vous êtes intéressé ? Contactez-nous !</a>
+                <a  className="contact-services" href="/information"> Vous êtes intéressé ? Contactez-nous !</a>
               </CardContent>
             </Card>
           </div>
@@ -47,7 +47,8 @@ const CarList = ({ cars }) => {
       </div>
       <Footer/>
     </div>
+    
   );
 };
 
-export default CarList;
+export default ServicesPage;

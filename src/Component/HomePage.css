@@ -9,22 +9,26 @@
 }
 
 .header{
-    margin: 30px;
-    display: flex;
-    flex-direction: row;
+    margin-top: 20px;
 }
 
 
 
-.logo-homepage{
-    width: 30vw;
-    margin: 0 auto;
+.logo-homepage {
+    position: absolute;
+    
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
     display: flex;
     align-items: center;
-    position: relative;
     justify-content: center;
-    
-}
+    z-index: 1;
+    margin-top: 35px;
+  }
+  
+  
+  
 
 .background-logonav{
     background-color: aliceblue;
@@ -44,3 +48,21 @@
     top: -10px;
 }
 
+.imghomepage{
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+
+.menu{
+    margin-top: 20px;
+}

@@ -3,15 +3,31 @@ import { Link } from 'react-router-dom';
 import { Box, Button, Typography, List, ListItem, ListItemText } from '@mui/material';
 import "./HomePage.css";
 import Menu from './Menu';
+import Footer from './Footer'; 
 
 const HomePage = ({ handleLogin }) => {
   return (
+
     <Box className='background-logonav' sx={{ p: 4 }}>
+      <img src='https://i0.wp.com/my-barn.com/wp-content/uploads/2023/05/logo-garage-1.png?resize=1200%2C720&ssl=1' alt="Logo du garage" className="logo-homepage" />
+      <Link to="/login">
+        <Button variant="contained" className="connectbutton" onClick={handleLogin}>
+          Se connecter
+        </Button>
+      </Link>
+      <Menu className='menu' />
       <div className='header'>
-        <img src='https://www.routebleueautomobile.fr/upload-articles/suivi-des-methodes-peugeot-route-bleue-automobile-pornic.jpeg'></img>
-      <img src='https://i0.wp.com/my-barn.com/wp-content/uploads/2023/05/logo-garage-1.png?resize=1200%2C720&ssl=1' alt="Logo du garage" className='logo-homepage' />
+        <img className='imghomepage' src='https://www.routebleueautomobile.fr/upload-articles/suivi-des-methodes-peugeot-route-bleue-automobile-pornic.jpeg'></img>
+        <div className='text-overlay'>
+          <h1>Garage Vincent Parrot</h1>
+          <div>
+          <p>Réparation Carosserie et Mécanique</p>
+          <p>Entretient de votre véhicule</p>
+          <p>Vente de voitures d'occasions</p>
+          </div>
+        </div>
       </div>
-      <Menu />
+
 
 
 
@@ -41,12 +57,9 @@ const HomePage = ({ handleLogin }) => {
         </List>
       </Box>
 
+<Footer/>
 
-      <Link to="/login">
-        <Button variant="contained" className='connectbutton' onClick={handleLogin}>
-          Se connecter
-        </Button>
-      </Link>
+
     </Box>
   );
 };

@@ -1,0 +1,67 @@
+.servicestitlepage {
+  text-align: center;
+  border: solid 1px #CCC;
+  border-radius: 10px;
+  width: 90%;
+  color: #777;
+  background: aliceblue;
+  margin: 0 auto; /* Ajoutez cette ligne pour centrer horizontalement */
+  display: flex; /* Ajoutez cette ligne pour centrer verticalement */
+  align-items: center; /* Ajoutez cette ligne pour centrer verticalement */
+  justify-content: center; /* Ajoutez cette ligne pour centrer horizontalement */
+  margin-top: 10px;
+  }
+  
+  .services-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 10px;
+    background-color: aliceblue;
+  }
+  
+  .service-card {
+    width: 100%; /* Modifier la largeur des cartes selon vos besoins */
+    max-width: 500px; /* Définir une largeur maximale pour limiter la taille des cartes */
+    margin: 10px auto; /* Modifier les marges pour centrer les cartes horizontalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;;
+  }
+  
+  .service-card .MuiCard-root {
+    height: 100%;
+  }
+  
+  .service-card .MuiCardContent-root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .service-card .MuiTypography-root {
+    margin-bottom: 10px;
+  }
+  
+  .service-image {
+    margin-bottom: 10px;
+  }
+
+  .service-description {
+    background-color: bisque; /* Remplacez cette valeur par la couleur de fond souhaitée */
+    /* Ajoutez d'autres styles nécessaires */
+  }
+
+  .contact-services {
+    font-size: 15px;
+    color: #777;
+    text-decoration: none;
+    display: flex;
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+  }

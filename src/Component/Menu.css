@@ -16,6 +16,7 @@
         justify-content: space-around;
         z-index: 1000;
         background-color: lightseagreen;
+        margin-top: 50px;
        
         
     }
@@ -29,3 +30,8 @@
         bottom: 0;
         display: flex;
     }
+
+    .liste.no-margin-top {
+        margin-top: 0 !important;
+      }
+      

@@ -15,7 +15,7 @@ const openingHours = [
 const ScheduleTable = () => {
   return (
     <div>
-      <Menu />
+      <Menu noMarginTop/>
       <div className='background-schedule'>
       <div className="schedule-table">
         <h2>Horaires d'Ouverture</h2>

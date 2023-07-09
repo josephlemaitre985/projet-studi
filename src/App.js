@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import LoginForm from '/Users/josephlemaitre/projet-studi/src/Component/LoginForm.jsx';
-import HomePage from '/Users/josephlemaitre/projet-studi/src/Component/HomePage.jsx';
-import '/Users/josephlemaitre/projet-studi/src/Component/LoginForm.css';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import LoginForm from './Component/LoginForm'; // Utilisez un chemin relatif pour l'importation
+import HomePage from './Component/HomePage'; // Utilisez un chemin relatif pour l'importation
+import './Component/LoginForm.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ScheduleTable from './Component/ScheduleTable';
 import CarList from './Component/CarList';
+import ServicesPage from './Component/ServicesPage';
+import FormPage from './Component/FormPage';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,6 +22,11 @@ const App = () => {
     // ... autres voitures
   ];
 
+  const services = [
+    { make: 'Réparation Carrosserie', price: 15000, photo: 'https://www.carflex.fr/data/news/img/137-1-zoom.png'},
+    { make: 'Entretien du véhicule', price: 14000,  photo: 'https://www.creditmutuel.fr/partage/fr/CC/CM/assets/articles/entretien-auto-des-conseils-pour-meviter-les-mauvaises-surprises/entete_800x400.jpg' },
+  ]
+
   return (
     <Router>
       <div className="App">
@@ -28,6 +35,8 @@ const App = () => {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/information" element={<ScheduleTable />} /> {/* Modification de la route pour correspondre à /informations */}
           <Route path="/occasion" element={<CarList cars={cars} />} /> {/* Passage des données des voitures au composant CarList */}
+          <Route path="/réparations" element={<ServicesPage services={services}/>} />
+          <Route path="/formulaire" element={<FormPage />} />
         </Routes>
        
         <div></div>
