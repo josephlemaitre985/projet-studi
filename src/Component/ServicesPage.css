@@ -1,15 +1,14 @@
 .servicestitlepage {
   text-align: center;
-  border: solid 1px #CCC;
   border-radius: 10px;
   width: 90%;
-  color: #777;
-  background: aliceblue;
-  margin: 0 auto; /* Ajoutez cette ligne pour centrer horizontalement */
-  display: flex; /* Ajoutez cette ligne pour centrer verticalement */
-  align-items: center; /* Ajoutez cette ligne pour centrer verticalement */
-  justify-content: center; /* Ajoutez cette ligne pour centrer horizontalement */
+  color: #fff;
+  background: linear-gradient(to right, #4a90e2, #2965cc);
+  margin: 0 auto;
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
+  
   }
   
   .services-container {
@@ -20,7 +19,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     margin: 10px;
-    background-color: aliceblue;
+    background-color: #f8f8f8;
   }
   
   .service-card {
@@ -52,7 +51,7 @@
   }
 
   .service-description {
-    background-color: bisque; /* Remplacez cette valeur par la couleur de fond souhaitée */
+    background-color: #fff; /* Remplacez cette valeur par la couleur de fond souhaitée */
     /* Ajoutez d'autres styles nécessaires */
   }
 

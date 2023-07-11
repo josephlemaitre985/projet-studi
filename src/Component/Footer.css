@@ -1,11 +1,12 @@
 /* Footer.css */
 
 .footer-container {
-    background-color: bisque;
+    background-color: #f8f8f8;
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    border-radius: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1)
   }
   
   .footer-section {
@@ -14,8 +15,14 @@
   
   .footer-section h3 {
     font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    
+    margin: 0;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 300;
+    
+    line-height: 1.2;
+    letter-spacing: -0.00833em;
+    margin-bottom: 0.35em;
   }
   
   .footer-section p {
@@ -32,13 +39,14 @@
 
   .footer-button {
     padding: 10px 20px;
-    background-color: #f7f7f7;
+   
     color: #333;
     border: none;
     border-radius: 4px;
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    
   }
   
   .footer-button:hover {

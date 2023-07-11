@@ -1,6 +1,9 @@
 import React from 'react';
 import './ScheduleTable.css';
 import Menu from './Menu';
+import { Link } from 'react-router-dom';
+import './Footer.css'
+
 
 const openingHours = [
   { day: 'Lundi', morningFrom: '08:45', morningTo: '12:00', afternoonFrom: '14:00', afternoonTo: '18:00' },
@@ -55,11 +58,18 @@ const ScheduleTable = () => {
       10 Rue des Jacobins, 14000, CAEN, FRANCE
     </a>
   </div>
+  <div className="footer-section">
+        <h3>Formulaire</h3>
+        <Link to="/formulaire">
+          <button className="footer-button">Nous contacter</button>
+        </Link>
+      </div>
 </div>
 
       </div>
     </div>
     </div>
+    
   );
 };
 
