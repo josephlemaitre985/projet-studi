@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import config from './config.js';
 import '/Users/josephlemaitre/projet-studi/src/Component/LoginForm.css';
 
 const LoginForm = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -15,8 +18,17 @@ const LoginForm = ({ handleLogin }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Ajoute ici la logique pour traiter les données de connexion (envoi au backend, validation, etc.)
+    e.preventDefault(); // Empêche le rechargement de la page
+
+    // Vérification des informations d'identification
+    if (email === config.adminEmail && password === config.adminPassword) {
+      // Les informations d'identification sont valides, appelle la fonction handleLogin
+      handleLogin();
+      navigate('/admin'); // Redirection vers la page d'administration après la connexion réussie
+    } else {
+      // Les informations d'identification sont invalides, affiche un message d'erreur
+      setErrorMessage('Adresse e-mail ou mot de passe incorrect.');
+    }
   };
 
   return (
@@ -33,6 +45,7 @@ const LoginForm = ({ handleLogin }) => {
             <input className='input' type="password" value={password} onChange={handlePasswordChange} placeholder='Votre mot de passe' />
           </div>
           <button className='button' type="submit">Se connecter</button>
+          {errorMessage && <p className='error-message'>{errorMessage}</p>}
         </div>
       </form>
       <img src='https://i0.wp.com/my-barn.com/wp-content/uploads/2023/05/logo-garage-1.png?resize=1200%2C720&ssl=1' alt="Logo du garage" className='logo' />

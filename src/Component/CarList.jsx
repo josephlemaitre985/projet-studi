@@ -11,11 +11,9 @@ const CarList = ({ cars }) => {
   const [filteredCars, setFilteredCars] = useState(cars);
   const [isHovered, setIsHovered] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
-  const [carDescription, setCarDescription] = useState('');
-
 
   const filterCars = () => {
-    const filtered = cars.filter(car => {
+    const filtered = cars.filter((car) => {
       if (priceFilter && car.price > priceFilter) {
         return false;
       }
@@ -46,19 +44,13 @@ const CarList = ({ cars }) => {
     setIsHovered(false);
   };
 
-  const openModal = car => {
+  const openModal = (car) => {
     setSelectedCar(car);
   };
 
   const closeModal = () => {
     setSelectedCar(null);
-    setCarDescription(cars.description);
   };
-
-  /* const handleDescriptionChange = (e) => {
-    setCarDescription(e.target.value);
-  }; */
-
 
   return (
     <div>
@@ -71,19 +63,19 @@ const CarList = ({ cars }) => {
           type="number"
           placeholder="Prix maximum"
           value={priceFilter}
-          onChange={e => setPriceFilter(e.target.value)}
+          onChange={(e) => setPriceFilter(e.target.value)}
         />
         <input
           type="number"
           placeholder="Kilométrage maximum"
           value={mileageFilter}
-          onChange={e => setMileageFilter(e.target.value)}
+          onChange={(e) => setMileageFilter(e.target.value)}
         />
         <input
           type="number"
           placeholder="Année minimum"
           value={yearFilter}
-          onChange={e => setYearFilter(e.target.value)}
+          onChange={(e) => setYearFilter(e.target.value)}
         />
         <button onClick={filterCars}>Rechercher</button>
         <button onClick={resetFilters} className="reset-button">
@@ -130,9 +122,6 @@ const CarList = ({ cars }) => {
                 <Typography variant="body2" color="textSecondary">
                   Carburant: {car.fuel}
                 </Typography>
-                <a className="contact" href="/information">
-                  Vous êtes intéressé ? Contactez-nous !
-                </a>
               </CardContent>
             </Card>
           </div>
@@ -174,7 +163,6 @@ const CarList = ({ cars }) => {
                 <Typography variant="body2" color="textSecondary">
                   {selectedCar.description}
                 </Typography>
-               
               </div>
             </div>
           </div>

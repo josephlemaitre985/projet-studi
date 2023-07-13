@@ -9,7 +9,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 
-const HomePage = ({ handleLogin }) => {
+const HomePage = ({ handleLogin, isLoggedIn, handleLogout }) => {
 
   const reviews = [
     {
@@ -53,11 +53,22 @@ const HomePage = ({ handleLogin }) => {
   return (
     <Box className='background-logonav' sx={{ p: 4 }}>
       <img src='https://i0.wp.com/my-barn.com/wp-content/uploads/2023/05/logo-garage-1.png?resize=1200%2C720&ssl=1' alt="Logo du garage" className="logo-homepage" />
-      <Link to="/login">
-        <Button variant="contained" className="connectbutton" onClick={handleLogin}>
-          Se connecter
-        </Button>
-      </Link>
+      {isLoggedIn ? (
+        <>
+          <Button variant="contained" className="admin-button" component={Link} to="/admin">
+            Admin
+          </Button>
+          <Button variant="contained" className="connectbutton" onClick={handleLogout}>
+            Se déconnecter
+          </Button>
+        </>
+      ) : (
+        <Link to="/login">
+          <Button variant="contained" className="connectbutton" onClick={handleLogin}>
+            Se connecter
+          </Button>
+        </Link>
+      )}
       <Menu className='menu' />
       <div className='header'>
         <img className='imghomepage' src='https://www.routebleueautomobile.fr/upload-articles/suivi-des-methodes-peugeot-route-bleue-automobile-pornic.jpeg'></img>
@@ -85,30 +96,28 @@ const HomePage = ({ handleLogin }) => {
           Nos services
         </Typography>
         <Slider {...settings}>
-  <div className="service-slide">
-    <img src="https://www.carflex.fr/data/news/img/137-1-zoom.png" alt="Image Carrosserie" />
-    <div className="slide-content">
-      <h3>Réparation Carrosserie et Mécanique</h3>
-      <p>Description de ton service de réparation carrosserie et mécanique.</p>
-    </div>
-  </div>
-  <div className="service-slide">
-    <img src="https://www.creditmutuel.fr/partage/fr/CC/CM/assets/articles/entretien-auto-des-conseils-pour-meviter-les-mauvaises-surprises/entete_800x400.jpg" alt="Image Entretien" />
-    <div className="slide-content">
-      <h3>Entretien de votre véhicule</h3>
-      <p>Description de ton service d'entretien de véhicule.</p>
-    </div>
-  </div>
-  <div className="service-slide vente-silde">
-    <img src="https://i-df.unimedias.fr/2023/03/06/voiture-occasion-achat.jpg?auto=format,compress&cs=tinysrgb" alt="Image Vente" />
-    <div className="slide-content">
-      <h3>Vente de voitures d'occasions</h3>
-      <p>Description de ton service de vente de voitures d'occasion.</p>
-    </div>
-  </div>
-</Slider>
-
-
+          <div className="service-slide">
+            <img src="https://www.carflex.fr/data/news/img/137-1-zoom.png" alt="Image Carrosserie" />
+            <div className="slide-content">
+              <h3>Réparation Carrosserie et Mécanique</h3>
+              <p>Description de ton service de réparation carrosserie et mécanique.</p>
+            </div>
+          </div>
+          <div className="service-slide">
+            <img src="https://www.creditmutuel.fr/partage/fr/CC/CM/assets/articles/entretien-auto-des-conseils-pour-meviter-les-mauvaises-surprises/entete_800x400.jpg" alt="Image Entretien" />
+            <div className="slide-content">
+              <h3>Entretien de votre véhicule</h3>
+              <p>Description de ton service d'entretien de véhicule.</p>
+            </div>
+          </div>
+          <div className="service-slide vente-silde">
+            <img src="https://i-df.unimedias.fr/2023/03/06/voiture-occasion-achat.jpg?auto=format,compress&cs=tinysrgb" alt="Image Vente" />
+            <div className="slide-content">
+              <h3>Vente de voitures d'occasions</h3>
+              <p>Description de ton service de vente de voitures d'occasion.</p>
+            </div>
+          </div>
+        </Slider>
       </Box>
 
       <div className="reviews-container">
