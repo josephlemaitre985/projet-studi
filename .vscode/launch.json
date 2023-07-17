@@ -1,6 +1,9 @@
 {
     "version": "0.2.0",
     "configurations": [
+
+
+    
     
         {
             "type": "node",
@@ -9,12 +12,12 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/../projet-studi-server/server.js"
+            "program": "${workspaceFolder}/./back-end/server.js"
         }
     ],
     "env": {
         "development": {
-            "PG_DB": "garage_projet_studi",
+            "PG_DB": "garage-projet-studi",
             "PG_USER": "postgres",
             "PG_PASSWORD": "Chouchou12072019!",
             "PG_HOST": "localhost",
