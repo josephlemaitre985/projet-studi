@@ -1,19 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, CardMedia } from '@mui/material';
+import axios from 'axios';
 import './CarList.css';
 import Menu from './Menu';
 import Footer from './Footer';
 
-const CarList = ({ cars }) => {
+const CarList = () => {
+  const [allCars, setAllCars] = useState([]);
+  const [filteredCars, setFilteredCars] = useState([]);
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/cars');
+        setAllCars(response.data);
+        setFilteredCars(response.data);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des voitures', error);
+      }
+    };
+
+    fetchCars();
+  }, []);
+
   const [priceFilter, setPriceFilter] = useState('');
   const [mileageFilter, setMileageFilter] = useState('');
   const [yearFilter, setYearFilter] = useState('');
-  const [filteredCars, setFilteredCars] = useState(cars);
   const [isHovered, setIsHovered] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
 
   const filterCars = () => {
-    const filtered = cars.filter((car) => {
+    const filtered = allCars.filter((car) => {
       if (priceFilter && car.price > priceFilter) {
         return false;
       }
@@ -33,7 +50,7 @@ const CarList = ({ cars }) => {
     setPriceFilter('');
     setMileageFilter('');
     setYearFilter('');
-    setFilteredCars(cars);
+    setFilteredCars(allCars);
   };
 
   const handleMouseEnter = () => {

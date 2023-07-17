@@ -8,7 +8,7 @@ import ScheduleTable from './Component/ScheduleTable';
 import CarList from './Component/CarList';
 import ServicesPage from './Component/ServicesPage';
 import FormPage from './Component/FormPage';
-import AdminPage from './Component/AdminPage';
+import AdminPage from './admin/AdminPage';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -59,48 +59,43 @@ const App = () => {
       console.error('Une erreur s\'est produite lors de la mise à jour de la voiture', error);
     }
   };
-  
 
-  const initialCars = [
-    {
-      id: 1,
-      make: 'Toyota',
-      model: 'Corolla',
-      year: 2018,
-      price: 15000,
-      kilometers: 50000,
-      fuel: 'Petrol',
-      photo: 'https://cdn.car-recalls.eu/wp-content/uploads/2021/07/Toyota-Corolla-2019-fuel-pump-768x431.jpg',
-      description: 'Voiture en excellent état, aucun défaut.',
-      editable: true // Ajoute la propriété "editable" à true pour les voitures
-    },
-    {
-      id: 2,
-      make: 'Honda',
-      model: 'Civic',
-      year: 2017,
-      price: 14000,
-      kilometers: 60000,
-      fuel: 'Diesel',
-      photo: 'https://www.automobile-magazine.fr/asset/cms/73867/config/56702/la-dixieme-generation-de-honda-civic-devoile-desormais-sa-version-cinq-portes-europeenne-identique-a-la-variante-americaine-a-quelques-details-declairage-pres.jpg',
-      editable: true // Ajoute la propriété "editable" à true pour les voitures
-    },
-    {
-      id: 3,
-      make: 'Ford',
-      model: 'Mustang',
-      year: 2015,
-      price: 25000,
-      kilometers: 30000,
-      fuel: 'Petrol',
-      photo: 'https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/14q4/638369/2015-ford-mustang-gt-automatic-test-review-car-and-driver-photo-644182-s-original.jpg?fill=2:1&resize=1200:*',
-      editable: true // Ajoute la propriété "editable" à true pour les voitures
-    },
-    // ... autres voitures
-  ];
+  const handleAddCar = async (newCar) => {
+    try {
+      const response = await axios.post('http://localhost:3000/api/cars', newCar);
+      if (response.status === 201) {
+        setCars([...cars, newCar]);
+      }
+    } catch (error) {
+      console.error('Une erreur s\'est produite lors de l\'ajout de la voiture', error);
+    }
+  };
+  
+  const handleDeleteCar = async (carId) => {
+    try {
+      const response = await axios.delete(`http://localhost:3000/api/cars/${carId}`);
+      if (response.status === 200) {
+        const updatedCars = cars.filter((car) => car.id !== carId);
+        setCars(updatedCars);
+      }
+    } catch (error) {
+      console.error('Une erreur s\'est produite lors de la suppression de la voiture', error);
+    }
+  };
 
   useEffect(() => {
-    setCars(initialCars);
+    const fetchCars = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/cars');
+        if (response.status === 200) {
+          setCars(response.data);
+        }
+      } catch (error) {
+        console.error('Une erreur s\'est produite lors de la récupération des voitures', error);
+      }
+    };
+
+    fetchCars();
   }, []);
 
   const services = [
@@ -119,16 +114,21 @@ const App = () => {
           <Route path="/réparations" element={<ServicesPage services={services} />} />
           <Route path="/formulaire" element={<FormPage />} />
           <Route
-  path="/admin"
-  element={
-    isLoggedIn ? (
-      <AdminPage handleLogout={handleLogout} onUpdateCars={handleUpdateCars} cars={cars} />
-    ) : (
-      <Navigate to="/login" replace state={{ from: '/admin' }} />
-    )
-  }
-/>
-
+            path="/admin/*" // Ajoutez le '/*' ici
+            element={
+              isLoggedIn ? (
+                <AdminPage 
+                  handleLogout={handleLogout} 
+                  onUpdate={handleUpdateCars} 
+                  onAddCar={handleAddCar} 
+                  onDeleteCar={handleDeleteCar} 
+                  cars={cars} 
+                />
+              ) : (
+                <Navigate to="/login" replace state={{ from: '/admin' }} />
+              )
+            }
+          />
         </Routes>
       </div>
     </Router>

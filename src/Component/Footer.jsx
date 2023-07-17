@@ -24,7 +24,7 @@ const Footer = () => {
       </div>
       <div className="footer-section">
         <h3>Formulaire</h3>
-        <Link to="/formulaire">
+        <Link to="/information">
           <button className="footer-button">Nous contacter</button>
         </Link>
       </div>

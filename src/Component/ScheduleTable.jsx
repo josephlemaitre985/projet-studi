@@ -1,75 +1,122 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ScheduleTable.css';
 import Menu from './Menu';
-import { Link } from 'react-router-dom';
-import './Footer.css'
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import './Form.css';
 
-
-const openingHours = [
-  { day: 'Lundi', morningFrom: '08:45', morningTo: '12:00', afternoonFrom: '14:00', afternoonTo: '18:00' },
-  { day: 'Mardi', morningFrom: '08:45', morningTo: '12:00', afternoonFrom: '14:00', afternoonTo: '18:00' },
-  { day: 'Mercredi', morningFrom: '08:45', morningTo: '12:00', afternoonFrom: '14:00', afternoonTo: '18:00' },
-  { day: 'Jeudi', morningFrom: '08:45', morningTo: '12:00', afternoonFrom: '14:00', afternoonTo: '18:00' },
-  { day: 'Vendredi', morningFrom: '08:45', morningTo: '12:00', afternoonFrom: '14:00', afternoonTo: '18:00' },
-  { day: 'Samedi', morningFrom: '08:45', morningTo: '12:00', afternoonFrom: 'Fermé', afternoonTo: 'Fermé' },
-  { day: 'Dimanche', morningFrom: 'Fermé', morningTo: 'Fermé', afternoonFrom: 'Fermé', afternoonTo: 'Fermé' },
-];
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required('Le nom est requis'),
+  email: Yup.string().email("L'adresse e-mail est invalide").required("L'adresse e-mail est requise"),
+  message: Yup.string().required('Le message est requis'),
+  phone: Yup.string().required('Le numéro de téléphone est requis'),
+});
 
 const ScheduleTable = () => {
+  const [openingHours, setOpeningHours] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/openinghours')
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setOpeningHours(data.openingHours);
+        } else {
+          console.error('Erreur lors de la récupération des horaires d\'ouverture:', data.error);
+        }
+      })
+      .catch((error) => {
+        console.error('Erreur lors de la récupération des horaires d\'ouverture:', error);
+      });
+  }, []);
+
   return (
     <div>
-      <Menu noMarginTop/>
-      <div className='background-schedule'>
-      <div className="schedule-table">
-        <h2>Horaires d'Ouverture</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Jour</th>
-              <th>Matinée</th>
-              <th>Après-midi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {openingHours.map((schedule) => (
-              <tr key={schedule.day}>
-                <td>{schedule.day}</td>
-                <td>{schedule.morningFrom} - {schedule.morningTo}</td>
-                <td>{schedule.afternoonFrom} - {schedule.afternoonTo}</td>
+      <Menu noMarginTop />
+      <div className="schedule-container">
+        <div className="schedule-table">
+          <h2>Horaires d'Ouverture</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Jour</th>
+                <th>Matinée</th>
+                <th>Après-midi</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {openingHours.map((schedule) => (
+                <tr key={schedule.day}>
+                  <td>{schedule.day}</td>
+                  <td>{schedule.morningFrom} - {schedule.morningTo}</td>
+                  <td>{schedule.afternoonFrom} - {schedule.afternoonTo}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-        <div className="contact-info">
-  <div>
-    <strong>Téléphone:</strong> <a href="tel:0123456789">0123456789</a>
-  </div>
-  <div>
-    <strong>Email:</strong> <a href="mailto:vincent.parrot@parrot.fr">vincent.parrot@parrot.fr</a>
-  </div>
-  <div>
-     <strong>Adresse:</strong>{" "}
-    <a
-      href="https://www.google.com/maps?q=10+Rue+des+jacobins,+Caen,+France"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      10 Rue des Jacobins, 14000, CAEN, FRANCE
-    </a>
-  </div>
-  <div className="footer-section">
-        <h3>Formulaire</h3>
-        <Link to="/formulaire">
-          <button className="footer-button">Nous contacter</button>
-        </Link>
-      </div>
-</div>
+          <div className="contact-info">
+            <div>
+              <strong>Téléphone:</strong> <a href="tel:0123456789">0123456789</a>
+            </div>
+            <div>
+              <strong>Email:</strong> <a href="mailto:vincent.parrot@parrot.fr">vincent.parrot@parrot.fr</a>
+            </div>
+            <div>
+              <strong>Adresse:</strong>{" "}
+              <a
+                href="https://www.google.com/maps?q=10+Rue+des+jacobins,+Caen,+France"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                10 Rue des Jacobins, 14000, CAEN, FRANCE
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div className="form-container">
+          <h3>Formulaire</h3>
+          <Formik
+            initialValues={{ name: '', email: '', message: '', phone: '' }}
+            validationSchema={validationSchema}
+            onSubmit={(values, actions) => {
+              // Logique de soumission du formulaire
+              console.log(values);
+              actions.setSubmitting(false);
+            }}
+          >
+            <Form>
+              <div className="form-field">
+                <label htmlFor="name" className="form-label">Nom :</label>
+                <Field type="text" id="name" name="name" className="form-input" />
+                <ErrorMessage name="name" component="div" className="error-message" />
+              </div>
 
+              <div className="form-field">
+                <label htmlFor="email" className="form-label">Adresse e-mail :</label>
+                <Field type="email" id="email" name="email" className="form-input" />
+                <ErrorMessage name="email" component="div" className="error-message" />
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="phone" className="form-label">Numéro de téléphone :</label>
+                <Field type="text" id="phone" name="phone" className="form-input" />
+                <ErrorMessage name="phone" component="div" className="error-message" />
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="message" className="form-label">Message :</label>
+                <Field as="textarea" id="message" name="message" className="form-input" />
+                <ErrorMessage name="message" component="div" className="error-message" />
+              </div>
+
+              <button type="submit" className="form-submit">Envoyer</button>
+            </Form>
+          </Formik>
+        </div>
       </div>
     </div>
-    </div>
-    
   );
 };
 
