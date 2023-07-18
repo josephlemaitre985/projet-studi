@@ -71,13 +71,15 @@ const HomePage = ({ handleLogin, isLoggedIn, handleLogout }) => {
       )}
       <Menu className='menu' />
       <div className='header'>
-        <img className='imghomepage' src='https://www.routebleueautomobile.fr/upload-articles/suivi-des-methodes-peugeot-route-bleue-automobile-pornic.jpeg'></img>
-        <div className='text-overlay'>
-          <h1>Garage Vincent Parrot</h1>
-          <div>
-            <p>Réparation Carosserie et Mécanique</p>
-            <p>Entretient de votre véhicule</p>
-            <p>Vente de voitures d'occasions</p>
+        <div className='imghomepage'>
+          <img src='https://www.routebleueautomobile.fr/upload-articles/suivi-des-methodes-peugeot-route-bleue-automobile-pornic.jpeg' alt="Image de la page d'accueil" className='imgvparrot'></img>
+          <div className='text-overlay'>
+            <h1>Garage Vincent Parrot</h1>
+            <div>
+              <p>Réparation Carosserie et Mécanique</p>
+              <p>Entretient de votre véhicule</p>
+              <p>Vente de voitures d'occasions</p>
+            </div>
           </div>
         </div>
       </div>

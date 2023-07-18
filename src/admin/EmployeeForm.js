@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const EmployeeForm = ({ onCreate }) => {
+const EmployeeForm = () => {
   const [employeeData, setEmployeeData] = useState({
     firstName: '',
     lastName: '',
@@ -8,11 +9,34 @@ const EmployeeForm = ({ onCreate }) => {
     password: '',
   });
 
-  const handleSubmit = (event) => {
+  const [employees, setEmployees] = useState([]);
+  const [shouldFetch, setShouldFetch] = useState(true); // Ajouté cette nouvelle variable d'état
+
+  const fetchEmployeesData = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/api/employees');
+      setEmployees(response.data);
+    } catch (error) {
+      console.error('Erreur lors de la récupération des employés', error);
+    }
+  };
+
+  // Utilisez `shouldFetch` comme dépendance ici
+  useEffect(() => {
+    if (shouldFetch) {
+      fetchEmployeesData();
+      setShouldFetch(false);
+    }
+  }, [shouldFetch]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Effectuer les actions nécessaires pour créer le compte employé (par ex. les envoyer au backend)
-    onCreate(employeeData);
-    // Réinitialiser le formulaire ou effectuer d'autres actions si nécessaires
+    try {
+      await axios.post('http://localhost:3000/api/employees', employeeData);
+      setShouldFetch(true);
+    } catch (error) {
+      console.error('Erreur lors de la création de l\'employé', error);
+    }
     setEmployeeData({
       firstName: '',
       lastName: '',
@@ -28,27 +52,38 @@ const EmployeeForm = ({ onCreate }) => {
       [name]: value,
     }));
   };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Prénom:</label>
-        <input type="text" name="firstName" value={employeeData.firstName} onChange={handleInputChange} />
-      </div>
-      <div>
-        <label>Nom:</label>
-        <input type="text" name="lastName" value={employeeData.lastName} onChange={handleInputChange} />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input type="email" name="email" value={employeeData.email} onChange={handleInputChange} />
-      </div>
-      <div>
-        <label>Mot de passe:</label>
-        <input type="password" name="password" value={employeeData.password} onChange={handleInputChange} />
-      </div>
-      <button type="submit">Créer le compte</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Prénom:</label>
+          <input type="text" name="firstName" value={employeeData.firstName} onChange={handleInputChange} />
+        </div>
+        <div>
+          <label>Nom:</label>
+          <input type="text" name="lastName" value={employeeData.lastName} onChange={handleInputChange} />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input type="email" name="email" value={employeeData.email} onChange={handleInputChange} />
+        </div>
+        <div>
+          <label>Mot de passe:</label>
+          <input type="password" name="password" value={employeeData.password} onChange={handleInputChange} />
+        </div>
+        <button type="submit">Créer le compte</button>
+      </form>
+
+      <h2>Liste des employés</h2>
+      {employees.map((employee) => (
+        <div key={employee.id}>
+          <h3>{employee.firstName} {employee.lastName}</h3>
+          <p>Email: {employee.email}</p>
+          {/* Affiche d'autres informations sur l'employé si nécessaire */}
+          <button>Modifier</button>
+        </div>
+      ))}
+    </div>
   );
 };
 

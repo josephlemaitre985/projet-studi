@@ -1,3 +1,25 @@
+/* Pour les écrans moyens */
+@media (max-width: 768px) {
+  .admin-button, .connectbutton {
+    font-size: 0.875rem; /* Exemple de réduction de la taille de la police */
+    margin-left: 1rem; /* Exemple d'ajout de marge à gauche */
+  }
+  .logo-homepage {
+    display: none;
+  }
+}
+
+/* Pour les petits écrans */
+@media (max-width: 480px) {
+  .admin-button, .connectbutton {
+    font-size: 0.75rem; /* Exemple de réduction de la taille de la police */
+    margin-left: 1rem; /* Exemple d'ajout de marge à gauche */
+  }
+  .logo-homepage {
+    display: none;
+  }
+}
+
 
 
 .button-container {
@@ -27,6 +49,12 @@
   margin-top: 35px;
 }
 
+@media (max-width: 768px) {
+  .logo-homepage {
+   display: none;
+  }
+}
+
 .background-logonav {
   background-color: #FFF;
 }
@@ -45,6 +73,7 @@
 }
 
 .imghomepage {
+  position: relative;
   width: 100%;
   max-height: 350px;
   object-fit: cover;
@@ -59,7 +88,14 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 5px;
+  width: 100%; 
+  box-sizing: border-box; 
 }
+
+.imgvparrot{
+  width: 100%;
+}
+
 
 .menu {
   margin-top: 20px;
@@ -208,4 +244,26 @@
   width: 100%;
   max-height: 350px;
   object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .service-slide {
+    height: 200px;
+  }
+  
+  .service-slide img {
+    max-height: 200px;
+  }
+
+  .slide-content {
+    padding: 10px;
+  }
+
+  .service-slide h3 {
+    font-size: 18px;
+  }
+
+  .service-slide p {
+    font-size: 14px;
+  }
 }

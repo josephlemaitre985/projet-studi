@@ -3,40 +3,40 @@ const sequelize = require('../config/database');
 
 const OpeningHours = sequelize.define('OpeningHours', {
 
-day : {
-    type : DataTypes.TIME,
-   
+day: {
+    type: DataTypes.STRING,
 },
 
-morningfrom : {
-    type : DataTypes.TIME,
-    
+isOpen: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
 },
 
-morningto : {
-    type : DataTypes.TIME,
-    
+morningfrom: {
+    type: DataTypes.TIME,
+    defaultValue: '00:00:00',
 },
 
-afternoonfrom : {
-    type : DataTypes.TIME,
-    
+morningto: {
+    type: DataTypes.TIME,
+    defaultValue: '00:00:00',
 },
 
-afternoonto : {
-    type : DataTypes.TIME,
-    
+afternoonfrom: {
+    type: DataTypes.TIME,
+    defaultValue: '00:00:00',
 },
 
-
-
-
+afternoonto: {
+    type: DataTypes.TIME,
+    defaultValue: '00:00:00',
+},
 }, {
-  tableName: 'openinghours', // Ajoutez cette ligne
+  tableName: 'openinghours',
 });
-OpeningHours.sync().then(() => {
-    console.log("OpeningHours model synced");
-  })
 
+OpeningHours.sync().then(() => {
+  console.log("OpeningHours model synced");
+});
 
 module.exports = OpeningHours;

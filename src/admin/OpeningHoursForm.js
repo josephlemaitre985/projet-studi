@@ -2,52 +2,75 @@ import React, { useState, useEffect } from 'react';
 
 const OpeningHoursForm = ({ onUpdate }) => {
   const [openingHours, setOpeningHours] = useState({
-    monday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
-    tuesday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
-    wednesday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
-    thursday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
-    friday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
-    saturday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
-    sunday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
+    Monday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
+    Tuesday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
+    Wednesday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
+    Thursday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
+    Friday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
+    Saturday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
+    Sunday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
   });
+  
 
   useEffect(() => {
     fetch('http://localhost:3000/api/openinghours')
       .then((response) => response.json())
       .then((data) => {
-        if (data.success) {
-          setOpeningHours(data.openingHours);
+        console.log('Raw API response:', data);
+        if (data.success && data.openingHours.length > 0) {
+          const openingHours = days.reduce((acc, currentDay) => {
+            const apiDayData = data.openingHours.find(dayData => dayData.day === currentDay);
+            return {
+              ...acc, 
+              [currentDay]: {
+                morningfrom: apiDayData ? apiDayData.morningfrom || '' : '',
+                morningto: apiDayData ? apiDayData.morningto || '' : '',
+                afternoonfrom: apiDayData ? apiDayData.afternoonfrom || '' : '',
+                afternoonto: apiDayData ? apiDayData.afternoonto || '' : ''
+              }
+            };
+          }, {});
+          setOpeningHours(openingHours);
         } else {
           console.error('Erreur lors de la récupération des horaires d\'ouverture:', data.error);
         }
       })
+      
       .catch((error) => {
         console.error('Erreur lors de la récupération des horaires d\'ouverture:', error);
       });
   }, []);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    fetch('http://localhost:3000/api/openinghours', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(openingHours),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          onUpdate(openingHours);
-        } else {
-          console.error('Erreur lors de la mise à jour des horaires d\'ouverture:', data.error);
-        }
+  
+    days.forEach(day => {
+      fetch(`http://localhost:3000/api/openinghours/${day}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...openingHours[day]
+        }),
       })
-      .catch((error) => {
-        console.error('Erreur lors de l\'envoi des données:', error);
-      });
-  };
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            onUpdate(day, data.openingHours);
+          } else {
+            console.error(`Erreur lors de la mise à jour des horaires d\'ouverture pour ${day}:`, data.error);
+          }
+        })
+        .catch((error) => {
+          console.error(`Erreur lors de l'envoi des données pour ${day}:`, error);
+        });
+    })
+};
+
+
+  
 
   const handleInputChange = (day, timeSlot, event) => {
     const { value } = event.target;
@@ -60,7 +83,7 @@ const OpeningHoursForm = ({ onUpdate }) => {
     }));
   };
 
-  const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const timeslots = ['morningfrom', 'morningto', 'afternoonfrom', 'afternoonto'];
 
   return (
@@ -71,7 +94,7 @@ const OpeningHoursForm = ({ onUpdate }) => {
           {timeslots.map((timeslot) => (
             <div key={timeslot}>
               <label>{timeslot}:</label>
-              <input type="text" name={`${day}-${timeslot}`} value={openingHours[day][timeslot]} onChange={(event) => handleInputChange(day, timeslot, event)} />
+              <input type="text" name={`${day}-${timeslot}`} value={openingHours[day] ? openingHours[day][timeslot] : ''} onChange={(event) => handleInputChange(day, timeslot, event)} />
             </div>
           ))}
         </div>

@@ -1,58 +1,68 @@
 /* Footer.css */
 
 .footer-container {
-    background-color: #304c5c;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    color: white
-    
-  }
-  
-  .footer-section {
-    flex-basis: 33%;
-  }
-  
-  .footer-section h3 {
-    font-size: 18px;
-    
-    margin: 0;
-    font-family: "Roboto","Helvetica","Arial",sans-serif;
-    font-weight: 300;
-    
-    line-height: 1.2;
-    letter-spacing: -0.00833em;
-    margin-bottom: 0.35em;
-  }
-  
-  .footer-section p {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    line-height: 1.4;
-  }
-  
-  .footer-section p svg {
-    margin-right: 8px;
+  background-color: #304c5c;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.footer-section {
+  flex-basis: 33%;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.00833em;
+  margin-bottom: 0.35em;
+}
+
+.footer-section p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.footer-section p svg {
+  margin-right: 8px;
+}
+
+.footer-button {
+  padding: 10px 20px;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footer-button:hover {
+  background-color: #ddd;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
   }
 
-  .footer-button {
-    padding: 10px 20px;
-   
-    color: #333;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    
+  .footer-section {
+    flex-basis: auto;
+    margin-bottom: 20px;
   }
   
-  .footer-button:hover {
-    background-color: #ddd;
+  .footer-section:last-child {
+    margin-bottom: 0;
   }
-  
-  
+}

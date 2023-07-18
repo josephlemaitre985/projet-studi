@@ -25,7 +25,7 @@ const AdminPage = ({ onUpdate, onUpdateCars, onAddCar, onDeleteCar }) => {
             />
           }
         />
-        <Route path="/openinghours" element={<OpeningHoursAdminPage />} />
+        <Route path="/openinghours" element={<OpeningHoursAdminPage onUpdate={onUpdate} />} />
         <Route path="/employees" element={<EmployeesAdminPage />} />
       </Routes>
 

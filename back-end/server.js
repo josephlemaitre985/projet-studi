@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Importe les routes pour les annonces de voiture et les horaires d'ouverture
 const carRoutes = require('./routes/carRoutes');
 const openinghoursRoutes = require('./routes/openinghoursRoutes'); // Nouvelle ligne
+const employeesRoutes = require('./routes/employeesRoutes');
 
 app.use(cors());
 
@@ -44,5 +45,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/cars', carRoutes);
 app.use('/api/openinghours', openinghoursRoutes); // Nouvelle ligne
+app.use('/api/employees', employeesRoutes);
+
 
 // Montage des routes pour les annonces de voiture

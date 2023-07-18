@@ -13,34 +13,49 @@ import AdminPage from './admin/AdminPage';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isEmployee, setIsEmployee] = useState(false); // Nouveau état
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
     const checkLoginStatus = () => {
       const adminStatus = localStorage.getItem('isAdmin');
       const loginStatus = localStorage.getItem('isLoggedIn');
+      const employeeStatus = localStorage.getItem('isEmployee'); // Nouveau
 
-      if (adminStatus && loginStatus) {
-        setIsAdmin(JSON.parse(adminStatus));
+      if (loginStatus) {
         setIsLoggedIn(JSON.parse(loginStatus));
+        setIsAdmin(adminStatus ? JSON.parse(adminStatus) : false);
+        setIsEmployee(employeeStatus ? JSON.parse(employeeStatus) : false);
       }
     };
 
     checkLoginStatus();
   }, []);
 
-  const handleLogin = () => {
+  const handleLogin = (role) => { // role passé en argument
     setIsLoggedIn(true);
-    setIsAdmin(true);
     localStorage.setItem('isLoggedIn', true);
-    localStorage.setItem('isAdmin', true);
+
+    if (role === 'admin') {
+      setIsAdmin(true);
+      setIsEmployee(false);
+      localStorage.setItem('isAdmin', true);
+      localStorage.removeItem('isEmployee');
+    } else if (role === 'employee') {
+      setIsAdmin(false);
+      setIsEmployee(true);
+      localStorage.setItem('isEmployee', true);
+      localStorage.removeItem('isAdmin');
+    }
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     setIsAdmin(false);
+    setIsEmployee(false);
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('isAdmin');
+    localStorage.removeItem('isEmployee');
   };
 
   const handleUpdateCars = async (updatedCar) => {
@@ -114,15 +129,16 @@ const App = () => {
           <Route path="/réparations" element={<ServicesPage services={services} />} />
           <Route path="/formulaire" element={<FormPage />} />
           <Route
-            path="/admin/*" // Ajoutez le '/*' ici
+            path="/admin/*"
             element={
               isLoggedIn ? (
                 <AdminPage 
                   handleLogout={handleLogout} 
-                  onUpdate={handleUpdateCars} 
-                  onAddCar={handleAddCar} 
-                  onDeleteCar={handleDeleteCar} 
+                  onUpdate={isAdmin ? handleUpdateCars : null}
+                  onAddCar={isAdmin ? handleAddCar : null}
+                  onDeleteCar={isAdmin ? handleDeleteCar : null}
                   cars={cars} 
+                  isEmployee={isEmployee} // Nouveau
                 />
               ) : (
                 <Navigate to="/login" replace state={{ from: '/admin' }} />

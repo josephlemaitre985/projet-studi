@@ -48,8 +48,8 @@ const ScheduleTable = () => {
               {openingHours.map((schedule) => (
                 <tr key={schedule.day}>
                   <td>{schedule.day}</td>
-                  <td>{schedule.morningFrom} - {schedule.morningTo}</td>
-                  <td>{schedule.afternoonFrom} - {schedule.afternoonTo}</td>
+                  <td>{schedule.morningfrom} - {schedule.morningto}</td>
+                  <td>{schedule.afternoonfrom} - {schedule.afternoonto}</td>
                 </tr>
               ))}
             </tbody>
