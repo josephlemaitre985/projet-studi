@@ -16,7 +16,7 @@ const ScheduleTable = () => {
   const [openingHours, setOpeningHours] = useState([]);
 
   useEffect(() => {
-    fetch('http://51.210.124.204:3000/api/openinghours')
+    fetch('http://localhost:3000/api/openinghours')
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {

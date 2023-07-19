@@ -12,7 +12,7 @@ const CarList = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await axios.get('http://51.210.124.204:3000/api/cars');
+        const response = await axios.get('http://localhost:3000/api/cars');
         setAllCars(response.data);
         setFilteredCars(response.data);
       } catch (error) {

@@ -41,11 +41,11 @@ const CarForm = ({ carId, initialData = {}, onUpdate, onAddCar }) => {
 
     try {
       if (carId) { // If carId exists, update the car
-        const response = await axios.put('http://51.210.124.204:3000/api/cars/' + carId, updatedData);
+        const response = await axios.put('http://localhost:3000/api/cars/' + carId, updatedData);
         const updatedCar = response.data;
         onUpdate(updatedCar); // Call the update function provided by the parent component
       } else { // If carId does not exist, create a new car
-        const response = await axios.post('http://51.210.124.204:3000/api/cars', updatedData);
+        const response = await axios.post('http://localhost:3000/api/cars', updatedData);
         const newCar = response.data;
         onAddCar(newCar); // Call the add function provided by the parent component
       }

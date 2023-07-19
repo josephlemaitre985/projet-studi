@@ -17,11 +17,11 @@
     ],
     "env": {
         "development": {
-            "PG_DB": "garage-projet-studi",
-            "PG_USER": "postgres",
-            "PG_PASSWORD": "Chouchou12072019!",
-            "PG_HOST": "localhost",
-            "PG_PORT": "5432",
+            "PG_DB": "garagevparrot_j",
+            "PG_USER": "garagevparrot_j",
+            "PG_PASSWORD": "Okolo2023",
+            "PG_HOST": "pj624348-001.eu.clouddb.ovh.net",
+            "PG_PORT": "35286",
             "JWTPRIVATEKEY": "secretkey",
             "SALT": "10"
         }
