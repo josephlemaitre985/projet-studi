@@ -32,7 +32,7 @@ const EmployeeForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:3000/api/employees', employeeData);
+      await axios.post('http://51.210.124.204:3000/api/employees', employeeData);
       setShouldFetch(true);
     } catch (error) {
       console.error('Erreur lors de la création de l\'employé', error);

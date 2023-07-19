@@ -60,7 +60,7 @@ const App = () => {
 
   const handleUpdateCars = async (updatedCar) => {
     try {
-      const response = await axios.put(`http://localhost:3000/api/cars/${updatedCar.id}`, updatedCar);
+      const response = await axios.put(`http://51.210.124.204:3000/api/cars/${updatedCar.id}`, updatedCar);
       if (response.status === 200) {
         const updatedCars = cars.map((car) => {
           if (car.id === updatedCar.id) {
@@ -77,7 +77,7 @@ const App = () => {
 
   const handleAddCar = async (newCar) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/cars', newCar);
+      const response = await axios.post('http://51.210.124.204:3000/api/cars', newCar);
       if (response.status === 201) {
         setCars([...cars, newCar]);
       }
@@ -88,7 +88,7 @@ const App = () => {
   
   const handleDeleteCar = async (carId) => {
     try {
-      const response = await axios.delete(`http://localhost:3000/api/cars/${carId}`);
+      const response = await axios.delete(`http://51.210.124.204:3000/api/cars/${carId}`);
       if (response.status === 200) {
         const updatedCars = cars.filter((car) => car.id !== carId);
         setCars(updatedCars);
@@ -101,7 +101,7 @@ const App = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/cars');
+        const response = await axios.get('http://51.210.124.204:3000/api/cars');
         if (response.status === 200) {
           setCars(response.data);
         }
@@ -114,8 +114,8 @@ const App = () => {
   }, []);
 
   const services = [
-    { make: 'Réparation Carrosserie', price: 15000, photo: 'https://www.carflex.fr/data/news/img/137-1-zoom.png' },
-    { make: 'Entretien du véhicule', price: 14000, photo: 'https://www.creditmutuel.fr/partage/fr/CC/CM/assets/articles/entretien-auto-des-conseils-pour-meviter-les-mauvaises-surprises/entete_800x400.jpg' },
+    { make: 'Réparation Carrosserie', price: 800, photo: 'https://www.carflex.fr/data/news/img/137-1-zoom.png' },
+    { make: 'Entretien du véhicule', price: 300, photo: 'https://www.creditmutuel.fr/partage/fr/CC/CM/assets/articles/entretien-auto-des-conseils-pour-meviter-les-mauvaises-surprises/entete_800x400.jpg' },
   ];
 
   return (

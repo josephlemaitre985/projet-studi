@@ -9,7 +9,7 @@ const CarsAdminPage = () => {
   useEffect(() => {
     const fetchCarsData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/cars');
+        const response = await axios.get('http://51.210.124.204:3000/api/cars');
         setCars(response.data);
       } catch (error) {
         console.error('Erreur lors de la récupération des annonces de voiture', error);
@@ -23,7 +23,7 @@ const CarsAdminPage = () => {
     const confirmation = window.confirm("Êtes-vous sûr de vouloir supprimer cette annonce ?");
     if (confirmation) {
       try {
-        await axios.delete(`http://localhost:3000/api/cars/${carId}`);
+        await axios.delete(`http://51.210.124.204:3000/api/cars/${carId}`);
         setCars(cars => cars.filter((car) => car.id !== carId));
       } catch (error) {
         console.error(`Erreur lors de la suppression de la voiture avec l'id ${carId}`, error);
