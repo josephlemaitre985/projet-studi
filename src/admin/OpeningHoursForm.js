@@ -13,7 +13,7 @@ const OpeningHoursForm = ({ onUpdate }) => {
   
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/openinghours')
+    fetch('http://51.210.124.204:3000/api/openinghours')
       .then((response) => response.json())
       .then((data) => {
         console.log('Raw API response:', data);
@@ -46,7 +46,7 @@ const OpeningHoursForm = ({ onUpdate }) => {
     event.preventDefault();
   
     days.forEach(day => {
-      fetch(`http://localhost:3000/api/openinghours/${day}`, {
+      fetch(`http://51.210.124.204:3000/api/openinghours/${day}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
