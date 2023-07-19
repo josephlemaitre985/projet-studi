@@ -20,7 +20,7 @@ const Footer = () => {
       <div className="footer-section">
         <h3>Adresse</h3>
         <p><FaMapMarker /> 123 Rue du Paradis</p>
-        <p><FaMapMarker /> 75000 Paris, France</p>
+        <p><FaMapMarker /> 31000 Toulouse, France</p>
       </div>
       <div className="footer-section">
         <h3>Formulaire</h3>

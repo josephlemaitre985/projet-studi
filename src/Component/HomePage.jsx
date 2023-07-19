@@ -72,7 +72,7 @@ const HomePage = ({ handleLogin, isLoggedIn, handleLogout }) => {
       <Menu className='menu' />
       <div className='header'>
         <div className='imghomepage'>
-          <img src='https://www.routebleueautomobile.fr/upload-articles/suivi-des-methodes-peugeot-route-bleue-automobile-pornic.jpeg' alt="Image de la page d'accueil" className='imgvparrot'></img>
+          <img src='https://www.routebleueautomobile.fr/upload-articles/suivi-des-methodes-peugeot-route-bleue-automobile-pornic.jpeg' alt="Image de la page d'accueil" ></img>
           <div className='text-overlay'>
             <h1>Garage Vincent Parrot</h1>
             <div>

@@ -65,11 +65,11 @@ const ScheduleTable = () => {
             <div>
               <strong>Adresse:</strong>{" "}
               <a
-                href="https://www.google.com/maps?q=10+Rue+des+jacobins,+Caen,+France"
+                href="https://www.google.com/maps?q=155+rue+de+Charonne,+Paris,+France"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                10 Rue des Jacobins, 14000, CAEN, FRANCE
+                123 rue du Paradis, 31000, Toulouse FRANCE
               </a>
             </div>
           </div>

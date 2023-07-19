@@ -1,14 +1,24 @@
 .schedule-container {
   display: flex;
+  flex-wrap: wrap; /* permet aux éléments d'être mis à la ligne si nécessaire */
   justify-content: center;
   align-items: flex-start;
 }
 
-.schedule-table {
-  margin-right: 20px;
-  width: 50%;
-  box-sizing: border-box;
+.schedule-table,
+.form-container {
+  box-sizing: border-box; /* Inclusion de la marge et du padding dans la largeur */
+  padding: 20px;
+  width: 100%; /* full width on small screens */
 }
+
+@media (min-width: 768px) { /* pour les écrans plus larges */
+  .schedule-table,
+  .form-container {
+    width: 45%; /* un peu moins de 50% pour tenir compte de l'espacement autour */
+  }
+}
+
 
 .schedule-table h2 {
   text-align: center;

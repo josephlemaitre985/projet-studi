@@ -23,11 +23,11 @@ app.listen(port, () => {
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  host: 'localhost',
-  port: 5432,
-  user: 'postgres',
-  password: 'Chouchou12072019!',
-  database: 'garage-projet-studi'
+  host: 'pj624348-001.eu.clouddb.ovh.net',
+  port: 35286,
+  user: 'garagevparrot_j',
+  password: 'Okolo2023',
+  database: 'garagevparrot_j'
 });
 
 // Vérification de la connexion à la base de données
