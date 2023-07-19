@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import config from '../admin/config.js';
-import '/Users/josephlemaitre/projet-studi/src/Component/LoginForm.css';
+import './LoginForm.css';
 
 const LoginForm = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
