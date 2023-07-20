@@ -2,7 +2,19 @@ const OpeningHours = require('../models/openinghours');
 
 exports.getAll = async (req, res) => {
   try {
-    const openingHours = await OpeningHours.findAll();
+    const openingHours = await OpeningHours.findAll({
+      order: Sequelize.literal(
+        `CASE
+          WHEN day = 'Monday' THEN 1
+          WHEN day = 'Tuesday' THEN 2
+          WHEN day = 'Wednesday' THEN 3
+          WHEN day = 'Thursday' THEN 4
+          WHEN day = 'Friday' THEN 5
+          WHEN day = 'Saturday' THEN 6
+          WHEN day = 'Sunday' THEN 7
+        END`
+      ),
+    });
     res.json({ success: true, openingHours }); 
   } catch (error) {
     res.status(500).json({ success: false, error: error.message }); 
