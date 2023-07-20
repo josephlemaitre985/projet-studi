@@ -10,14 +10,13 @@ const OpeningHoursForm = ({ onUpdate }) => {
     Saturday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
     Sunday: { morningfrom: '', morningto: '', afternoonfrom: '', afternoonto: '' },
   });
-  
 
   useEffect(() => {
     fetch('/api/openinghours')
       .then((response) => response.json())
       .then((data) => {
         console.log('Raw API response:', data);
-        if (data.success && data.openingHours.length > 0) {
+        if (data && data.success && data.openingHours.length > 0) {
           const openingHours = days.reduce((acc, currentDay) => {
             const apiDayData = data.openingHours.find(dayData => dayData.day === currentDay);
             return {
@@ -35,12 +34,10 @@ const OpeningHoursForm = ({ onUpdate }) => {
           console.error('Erreur lors de la récupération des horaires d\'ouverture:', data.error);
         }
       })
-      
       .catch((error) => {
         console.error('Erreur lors de la récupération des horaires d\'ouverture:', error);
       });
   }, []);
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -57,7 +54,7 @@ const OpeningHoursForm = ({ onUpdate }) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          if (data.success) {
+          if (data && data.success) {
             onUpdate(day, data.openingHours);
           } else {
             console.error(`Erreur lors de la mise à jour des horaires d\'ouverture pour ${day}:`, data.error);
@@ -67,10 +64,7 @@ const OpeningHoursForm = ({ onUpdate }) => {
           console.error(`Erreur lors de l'envoi des données pour ${day}:`, error);
         });
     })
-};
-
-
-  
+  };
 
   const handleInputChange = (day, timeSlot, event) => {
     const { value } = event.target;
