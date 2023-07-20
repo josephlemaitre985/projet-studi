@@ -1,4 +1,5 @@
 const OpeningHours = require('../models/openinghours');
+const { Sequelize } = require('sequelize');
 
 exports.getAll = async (req, res) => {
   try {
