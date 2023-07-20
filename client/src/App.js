@@ -123,7 +123,7 @@ const App = () => {
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage handleLogin={handleLogin} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />} />
-          <Route path="/login" element={<LoginForm handleLogin={handleLogin} />} />
+          <Route path="/login" element={<LoginForm handleLogin={handleLogin} handleLogout={handleLogout} />} /> {/* Ajout de handleLogout ici */}
           <Route path="/information" element={<ScheduleTable />} />
           <Route path="/occasion" element={<CarList cars={cars} isAdmin={isAdmin} />} />
           <Route path="/réparations" element={<ServicesPage services={services} />} />
