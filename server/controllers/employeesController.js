@@ -79,19 +79,18 @@ const login = async (req, res) => {
   try {
     const employee = await User.findOne({ where: { email } });
     if (!employee) {
-      return res.status(404).json({ error: 'Employé non trouvé' });
+      return res.status(404).json({ success: false, error: 'Employé non trouvé' });
     }
 
     const isPasswordValid = await bcrypt.compare(password, employee.password);
     if (!isPasswordValid) {
-      return res.status(401).json({ error: 'Mot de passe incorrect' });
+      return res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
     }
 
-
-    res.json({ message: 'Connexion réussie', employee });
+    res.json({ success: true, role: employee.role });
   } catch (error) {
     console.error('Erreur lors de la connexion de l\'employé', error);
-    res.status(500).json({ error: 'Erreur lors de la connexion de l\'employé' });
+    res.status(500).json({ success: false, error: 'Erreur lors de la connexion de l\'employé' });
   }
 };
 
