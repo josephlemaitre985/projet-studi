@@ -77,7 +77,7 @@ const HomePage = ({ handleLogin, isLoggedIn, handleLogout }) => {
             <h1>Garage Vincent Parrot</h1>
             <div>
               <p>Réparation Carosserie et Mécanique</p>
-              <p>Entretient de votre véhicule</p>
+              <p>Entretien de votre véhicule</p>
               <p>Vente de voitures d'occasions</p>
             </div>
           </div>
@@ -85,7 +85,7 @@ const HomePage = ({ handleLogin, isLoggedIn, handleLogout }) => {
       </div>
 
       <Box className="presentation" sx={{ mt: 4 }}>
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h2" gutterBottom className='title-presentation'>
           Présentation de l'entreprise
         </Typography>
         <Typography variant="body1" gutterBottom className='text-presentation'>
@@ -94,7 +94,7 @@ const HomePage = ({ handleLogin, isLoggedIn, handleLogout }) => {
           Nous sommes également spécialisés dans la vente de véhicules d'occasion de qualité, soigneusement sélectionnés et vérifiés par notre équipe d'experts.
           Chez nous, votre voiture est entre de bonnes mains. Nous sommes fiers de notre réputation de confiance et de notre engagement à fournir un service professionnel et fiable.
         </Typography>
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h2" gutterBottom className='title-presentation'>
           Nos services
         </Typography>
         <Slider {...settings}>

@@ -92,16 +92,17 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 10px; 
+  font-size: 25px;
 }
 
 @media (max-width: 768px) {
   .imghomepage {
-    height: 200px; 
+    height: 300px; 
   }
 
   .text-overlay {
-    font-size: 10px; 
-    padding: 5px;
+    font-size: 13px; 
+    padding: 10px;
   }
 }
 
@@ -111,6 +112,11 @@
 
 .menu {
   margin-top: 20px;
+}
+
+.title-presentation{
+  text-align: center;
+  font-size: 2.5rem !important;
 }
 
 .text-presentation {
