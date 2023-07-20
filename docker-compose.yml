@@ -1,0 +1,16 @@
+version: "3"
+services:
+  app:
+    image: "projetstudi:v1.0"
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    environment:
+      - PG_DB = garagevparrot_j
+      - PG_USER = garagevparrot_j
+      - PG_PASSWORD = Okolo2023
+      - PG_HOST = pj624348-001.eu.clouddb.ovh.net
+      - PG_PORT = 35286
+      - JWTPRIVATEKEY = secretkey
+      - SALT = 10
