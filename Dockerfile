@@ -13,7 +13,7 @@ RUN npm install
 
 # prepare client app
 WORKDIR /app/client
-RUN npm install
+RUN npm i -f
 RUN npm run build 
 RUN rsync -rvlptzEog build/ ../server/build/ 
 
