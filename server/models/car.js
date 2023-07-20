@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const { Sequelize, DataTypes } = require('sequelize');
+const db = require('../util/database')
 
-const Car = sequelize.define('Car', {
+const Car = db.define('Car', {
   id : {
     type : DataTypes.INTEGER,
     autoIncrement : true,
@@ -9,7 +9,7 @@ const Car = sequelize.define('Car', {
     allowNull : false
   },
   make: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING
    
   },
   model: {

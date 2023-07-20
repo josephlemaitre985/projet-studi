@@ -1,7 +1,9 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const { Sequelize, DataTypes } = require('sequelize');
+const db = require('../util/database')
 
-const OpeningHours = sequelize.define('OpeningHours', {
+
+
+const OpeningHours = db.define('OpeningHours', {
 
 day: {
     type: DataTypes.STRING,

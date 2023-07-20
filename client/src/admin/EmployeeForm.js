@@ -14,7 +14,7 @@ const EmployeeForm = () => {
 
   const fetchEmployeesData = async () => {
     try {
-      const response = await axios.get('http://51.210.124.204:3000/api/employees');
+      const response = await axios.get('/api/employees');
       setEmployees(response.data);
     } catch (error) {
       console.error('Erreur lors de la récupération des employés', error);
@@ -32,7 +32,7 @@ const EmployeeForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('http://51.210.124.204:3000/api/employees', employeeData);
+      await axios.post('/api/employees', employeeData);
       setShouldFetch(true);
     } catch (error) {
       console.error('Erreur lors de la création de l\'employé', error);

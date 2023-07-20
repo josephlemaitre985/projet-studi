@@ -41,11 +41,11 @@ const CarForm = ({ carId, initialData = {}, onUpdate, onAddCar }) => {
 
     try {
       if (carId) { 
-        const response = await axios.put('http://51.210.124.204:3000/api/cars/' + carId, updatedData);
+        const response = await axios.put('/api/cars/' + carId, updatedData);
         const updatedCar = response.data;
         onUpdate(updatedCar); 
       } else { 
-        const response = await axios.post('http://51.210.124.204:3000/api/cars', updatedData);
+        const response = await axios.post('/api/cars', updatedData);
         const newCar = response.data;
         onAddCar(newCar); 
       }
