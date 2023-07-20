@@ -1,19 +1,18 @@
-/* Pour les écrans moyens */
 @media (max-width: 768px) {
   .admin-button, .connectbutton {
-    font-size: 0.875rem; /* Exemple de réduction de la taille de la police */
-    margin-left: 1rem; /* Exemple d'ajout de marge à gauche */
+    font-size: 0.875rem; 
+    margin-left: 1rem; 
   }
   .logo-homepage {
     display: none;
   }
 }
 
-/* Pour les petits écrans */
+
 @media (max-width: 480px) {
   .admin-button, .connectbutton {
-    font-size: 0.75rem; /* Exemple de réduction de la taille de la police */
-    margin-left: 1rem; /* Exemple d'ajout de marge à gauche */
+    font-size: 0.75rem; 
+    margin-left: 1rem; 
   }
   .logo-homepage {
     display: none;
@@ -75,7 +74,7 @@
 .imghomepage {
   position: relative;
   width: 100%;
-  height: 500px; /* Ajustez en fonction de la taille désirée pour les grands écrans */
+  height: 500px; 
 }
 
 .imghomepage img {
@@ -92,16 +91,16 @@
   text-align: center;
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
-  padding: 10px; /* Ajustez en fonction de la taille désirée pour les grands écrans */
+  padding: 10px; 
 }
 
 @media (max-width: 768px) {
   .imghomepage {
-    height: 200px; /* Ajustez en fonction de la taille désirée pour les petits écrans */
+    height: 200px; /
   }
 
   .text-overlay {
-    font-size: 10px; /* Ajustez en fonction de la taille désirée pour les petits écrans */
+    font-size: 10px; 
     padding: 5px;
   }
 }
@@ -186,7 +185,6 @@
 .slick-arrow {
   width: 50px !important;
   height: 50px !important;
-  /*background-color: #333 !important;*/
   color: #fff !important;
   display: flex;
   align-items: center;

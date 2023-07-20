@@ -18,18 +18,15 @@ const LoginForm = ({ handleLogin }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Empêche le rechargement de la page
+    e.preventDefault(); 
 
     if (email === config.adminEmail && password === config.adminPassword) {
-      // Les informations d'identification sont valides, appelle la fonction handleLogin
       handleLogin('admin');
-      navigate('/admin'); // Redirection vers la page d'administration après la connexion réussie
+      navigate('/admin');
     } else if (email === config.employeeEmail && password === config.employeePassword) {
-      // Les informations d'identification sont valides pour un employé, appelle la fonction handleLogin
       handleLogin('employee');
-      navigate('/admin'); // Redirection vers la page d'administration après la connexion réussie
+      navigate('/admin'); 
     } else {
-      // Les informations d'identification sont invalides, affiche un message d'erreur
       setErrorMessage('Adresse e-mail ou mot de passe incorrect.');
     }
   };

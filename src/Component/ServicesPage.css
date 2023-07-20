@@ -23,9 +23,9 @@
   }
   
   .service-card {
-    width: 100%; /* Modifier la largeur des cartes selon vos besoins */
-    max-width: 500px; /* Définir une largeur maximale pour limiter la taille des cartes */
-    margin: 10px auto; /* Modifier les marges pour centrer les cartes horizontalement */
+    width: 100%; 
+    max-width: 500px; 
+    margin: 10px auto; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,8 +51,8 @@
   }
 
   .service-description {
-    background-color: #fff; /* Remplacez cette valeur par la couleur de fond souhaitée */
-    /* Ajoutez d'autres styles nécessaires */
+    background-color: #fff; 
+    
   }
 
   .contact-services {

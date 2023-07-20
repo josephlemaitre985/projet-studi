@@ -45,7 +45,7 @@ const CarsAdminPage = () => {
       <h2>Gérer les annonces de voitures</h2>
       {message && <div className="success-message">{message}</div>}      {cars.map((car) => (
         <div key={car.id}>
-          <h3>{car.make} {car.model}</h3> {/* Afficher la marque et le modèle */}
+          <h3>{car.make} {car.model}</h3> 
           <CarForm carId={car.id} initialData={car} onUpdate={handleCarUpdate} onAddCar={handleCarAdd} />
           <button onClick={() => handleCarDelete(car.id)}>Supprimer cette voiture</button>
         </div>

@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const port = 3000; // Choisis le port que tu souhaites utiliser
+const port = 3000; 
 const cors = require('cors');
 
 const bodyParser = require('body-parser');
@@ -9,9 +9,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Importe les routes pour les annonces de voiture et les horaires d'ouverture
 const carRoutes = require('./routes/carRoutes');
-const openinghoursRoutes = require('./routes/openinghoursRoutes'); // Nouvelle ligne
+const openinghoursRoutes = require('./routes/openinghoursRoutes'); 
 const employeesRoutes = require('./routes/employeesRoutes');
 
 app.use(cors());
@@ -30,7 +29,6 @@ const pool = new Pool({
   database: 'garagevparrot_j'
 });
 
-// Vérification de la connexion à la base de données
 pool.connect((err, client, done) => {
   if (err) {
     console.error('Erreur lors de la connexion à la base de données', err);
@@ -44,8 +42,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/cars', carRoutes);
-app.use('/api/openinghours', openinghoursRoutes); // Nouvelle ligne
+app.use('/api/openinghours', openinghoursRoutes); 
 app.use('/api/employees', employeesRoutes);
 
 
-// Montage des routes pour les annonces de voiture

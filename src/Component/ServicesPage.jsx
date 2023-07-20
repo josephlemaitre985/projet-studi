@@ -19,7 +19,7 @@ const ServicesPage = ({ services }) => {
               <CardMedia 
                 component="img"
                 className="service-image"
-                image={services.photo} // Ajout de la propriété "photo" dans l'objet car pour l'URL de l'image
+                image={services.photo} 
                 alt={`${services.make} `}
               />
               <CardContent className='service-description'>
@@ -32,7 +32,6 @@ const ServicesPage = ({ services }) => {
                 <Typography variant="body2" color="textSecondary">
                   Prix: {services.price}€
                 </Typography>
-                {/* Add more details about the car */}
                 <Typography variant="body2" color="textSecondary">
                   
                 </Typography>

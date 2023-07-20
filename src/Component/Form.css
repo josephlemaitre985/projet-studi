@@ -7,15 +7,15 @@
 
 .schedule-table,
 .form-container {
-  box-sizing: border-box; /* Inclusion de la marge et du padding dans la largeur */
+  box-sizing: border-box; 
   padding: 20px;
-  width: 100%; /* full width on small screens */
+  width: 100%; 
 }
 
-@media (min-width: 768px) { /* pour les écrans plus larges */
+@media (min-width: 768px) { 
   .schedule-table,
   .form-container {
-    width: 45%; /* un peu moins de 50% pour tenir compte de l'espacement autour */
+    width: 45%; 
   }
 }
 
@@ -83,10 +83,7 @@
 }
 
 .form-container {
- /*  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
+ 
   max-width: 400px;
   padding: 20px;
   background-color: #f7f7f7;

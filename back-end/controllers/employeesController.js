@@ -1,7 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
-// Récupérer tous les employés
 const getAll = async (req, res) => {
   try {
     const employees = await User.findAll();
@@ -12,7 +11,6 @@ const getAll = async (req, res) => {
   }
 };
 
-// Récupérer un employé par son ID
 const getById = async (req, res) => {
   const { id } = req.params;
 
@@ -28,7 +26,6 @@ const getById = async (req, res) => {
   }
 };
 
-// Créer un nouvel employé
 const create = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -42,7 +39,6 @@ const create = async (req, res) => {
   }
 };
 
-// Mettre à jour les informations d'un employé
 const update = async (req, res) => {
   const { id } = req.params;
   const { firstName, lastName, email, password } = req.body;
@@ -61,7 +57,6 @@ const update = async (req, res) => {
   }
 };
 
-// Supprimer un employé
 const remove = async (req, res) => {
   const { id } = req.params;
 
@@ -78,7 +73,6 @@ const remove = async (req, res) => {
   }
 };
 
-// Authentification de l'employé
 const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -93,7 +87,6 @@ const login = async (req, res) => {
       return res.status(401).json({ error: 'Mot de passe incorrect' });
     }
 
-    // Générer un token JWT ou une autre méthode d'authentification ici si nécessaire
 
     res.json({ message: 'Connexion réussie', employee });
   } catch (error) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaClock, FaEnvelope, FaPhone, FaMapMarker } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import './Footer.css'; // Importez le fichier CSS
+import './Footer.css'; 
 
 const Footer = () => {
   return (

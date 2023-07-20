@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './AdminNav.css'; // vous pouvez créer et personnaliser ce fichier CSS
+import './AdminNav.css'; 
 
 const AdminNav = () => {
   return (

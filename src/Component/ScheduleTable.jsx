@@ -81,7 +81,6 @@ const ScheduleTable = () => {
             initialValues={{ name: '', email: '', message: '', phone: '' }}
             validationSchema={validationSchema}
             onSubmit={(values, actions) => {
-              // Logique de soumission du formulaire
               console.log(values);
               actions.setSubmitting(false);
             }}

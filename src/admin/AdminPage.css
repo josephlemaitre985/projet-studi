@@ -48,7 +48,7 @@
     margin-bottom: 10px;
   }
   
-  /* Style du formulaire */
+ 
   
   form {
     display: flex;
@@ -77,7 +77,7 @@
     cursor: pointer;
   }
   
-  /* Style des messages de succès */
+  
   
   .success-message {
     background-color: #c3e6cb;

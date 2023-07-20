@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './CarForm.css'; // Import CSS file
+import './CarForm.css'; 
 
 
 const CarForm = ({ carId, initialData = {}, onUpdate, onAddCar }) => {
@@ -40,14 +40,14 @@ const CarForm = ({ carId, initialData = {}, onUpdate, onAddCar }) => {
     };
 
     try {
-      if (carId) { // If carId exists, update the car
+      if (carId) { 
         const response = await axios.put('http://51.210.124.204:3000/api/cars/' + carId, updatedData);
         const updatedCar = response.data;
-        onUpdate(updatedCar); // Call the update function provided by the parent component
-      } else { // If carId does not exist, create a new car
+        onUpdate(updatedCar); 
+      } else { 
         const response = await axios.post('http://51.210.124.204:3000/api/cars', updatedData);
         const newCar = response.data;
-        onAddCar(newCar); // Call the add function provided by the parent component
+        onAddCar(newCar); 
       }
     } catch (error) {
       console.error('Erreur lors de la mise à jour de l\'annonce de voiture', error);

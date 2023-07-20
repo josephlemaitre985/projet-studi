@@ -10,7 +10,7 @@ const EmployeeForm = () => {
   });
 
   const [employees, setEmployees] = useState([]);
-  const [shouldFetch, setShouldFetch] = useState(true); // Ajouté cette nouvelle variable d'état
+  const [shouldFetch, setShouldFetch] = useState(true); 
 
   const fetchEmployeesData = async () => {
     try {
@@ -21,7 +21,7 @@ const EmployeeForm = () => {
     }
   };
 
-  // Utilisez `shouldFetch` comme dépendance ici
+  
   useEffect(() => {
     if (shouldFetch) {
       fetchEmployeesData();
@@ -79,7 +79,7 @@ const EmployeeForm = () => {
         <div key={employee.id}>
           <h3>{employee.firstName} {employee.lastName}</h3>
           <p>Email: {employee.email}</p>
-          {/* Affiche d'autres informations sur l'employé si nécessaire */}
+          
           <button>Modifier</button>
         </div>
       ))}

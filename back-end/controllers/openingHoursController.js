@@ -3,9 +3,9 @@ const OpeningHours = require('../models/openinghours');
 exports.getAll = async (req, res) => {
   try {
     const openingHours = await OpeningHours.findAll();
-    res.json({ success: true, openingHours }); // Ajoute la clé "success"
+    res.json({ success: true, openingHours }); 
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message }); // Ajoute la clé "success"
+    res.status(500).json({ success: false, error: error.message }); 
   }
 };
 
@@ -31,7 +31,6 @@ exports.update = async (req, res) => {
   try {
     let openingHoursData = req.body;
 
-    // If isOpen is false, ignore or reset the time fields
     if (openingHoursData.isOpen === false) {
       openingHoursData = {
         ...openingHoursData,

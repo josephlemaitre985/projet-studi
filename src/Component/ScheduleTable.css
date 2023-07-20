@@ -6,8 +6,8 @@
 
 .schedule-table {
   margin-right: 20px;
-  width: 50%; /* Ajout d'une largeur de 50% pour occuper la moitié de la page horizontalement */
-  box-sizing: border-box; /* Inclusion de la marge et du padding dans la largeur */
+  width: 50%; 
+  box-sizing: border-box; 
 }
 
 .schedule-table h2 {
@@ -73,8 +73,8 @@
 }
 
 .form-container {
-  width: 50%; /* Ajout d'une largeur de 50% pour occuper la moitié de la page horizontalement */
-  box-sizing: border-box; /* Inclusion de la marge et du padding dans la largeur */
+  width: 50%; 
+  box-sizing: border-box; 
   padding: 20px;
   background-color: #f7f7f7;
   border-radius: 4px;
