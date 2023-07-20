@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, CardMedia } from '@mui/material';
 import axios from 'axios';
 import './CarList.css';
+import './ServicesPage.css'; 
 import Menu from './Menu';
 import Footer from './Footer';
 
@@ -139,6 +140,7 @@ const CarList = () => {
                 <Typography variant="body2" color="textSecondary">
                   Carburant: {car.fuel}
                 </Typography>
+                <a className="contact-services" href="/information"> Vous êtes intéressé ? Contactez-nous !</a>
               </CardContent>
             </Card>
           </div>

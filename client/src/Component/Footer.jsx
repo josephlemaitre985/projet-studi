@@ -14,13 +14,12 @@ const Footer = () => {
       </div>
       <div className="footer-section">
         <h3>Contact</h3>
-        <p><FaEnvelope /> Email: vincent.parrot@parrot.fr</p>
-        <p><FaPhone /> Téléphone: +1234567890</p>
+        <p><FaEnvelope /> Email: <a href="mailto:vincent.parrot@parrot.fr">vincent.parrot@parrot.fr</a></p>
+        <p><FaPhone /> Téléphone: <a href="tel:+1234567890">+1234567890</a></p>
       </div>
       <div className="footer-section">
         <h3>Adresse</h3>
-        <p><FaMapMarker /> 123 Rue du Paradis</p>
-        <p> 31000 Toulouse, France</p>
+        <p><FaMapMarker /> <a href="https://www.google.com/maps?q=155+rue+de+Charonne,+Paris,+France" target="_blank" rel="noopener noreferrer">123 Rue du Paradis, 31000 Toulouse, France</a></p>
       </div>
       <div className="footer-section">
         <h3>Formulaire</h3>
