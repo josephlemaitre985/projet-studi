@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import config from '../admin/config.js';
 import './LoginForm.css';
-import config from '../admin/config.js';
+
 
 const LoginForm = ({ handleLogin, handleLogout }) => { // Ajout de handleLogout ici
   const [email, setEmail] = useState('');
